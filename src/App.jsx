@@ -1,25 +1,23 @@
-import "./App.css";
+import React, { useState } from "react";
 import Navbar from "./Component/Navbar";
-import About from "./Pages/About";
 import Hero from "./Pages/Hero";
-import videoBg from "./assets/bg.mp4";
+import About from "./Pages/About";
+import CustomCursor from "./Component/CustomCursor";
 
 const App = () => {
+  const [darkMode, setDarkMode] = useState(true); // default dark
+
   return (
-    <div className="main">
+    <div className={darkMode ? "dark" : ""}>
+      <CustomCursor />
+      
+      <div className="min-h-screen bg-gray-900 dark:bg-gray-50 transition-colors duration-500 relative overflow-x-hidden">
+        {/* Pass darkMode & setDarkMode to Navbar */}
+        <Navbar darkMode={darkMode} setDarkMode={setDarkMode} />
 
-      <video autoPlay loop muted playsInline className="video-bg">
-        <source src={videoBg} type="video/mp4" />
-      </video>
-
-      <div className="overlay"></div>
-
-      <div className="content">
-        <Navbar/>
-        <Hero/>
-        <About/>
+        <Hero />
+        <About />
       </div>
-
     </div>
   );
 };

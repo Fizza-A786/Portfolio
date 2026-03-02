@@ -1,0 +1,45 @@
+/* Sab default cursors ko hide karein */
+body, a, button {
+  cursor: none !important;
+}
+
+/* Inner Dot */
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 9999;
+  transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
+  mix-blend-mode: difference; /* Yeh magic color effect ke liye hai */
+}
+
+/* Outer Circle (Trailing Effect) */
+.cursor-outline {
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 50%;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 9998;
+  transition: left 0.15s ease-out, top 0.15s ease-out, width 0.3s ease, height 0.3s ease, background-color 0.3s ease;
+  mix-blend-mode: difference;
+}
+
+/* --- HOVER EFFECTS (Jab Link ya Button par jaye) --- */
+.cursor-dot.hovered {
+  opacity: 0; /* Andar wala dot gayab ho jayega */
+}
+
+.cursor-outline.hovered {
+  width: 65px;
+  height: 65px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid transparent;
+  backdrop-filter: blur(4px); /* Halka sa glass effect */
+}
