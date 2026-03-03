@@ -1,4 +1,4 @@
-/* Sab default cursors ko hide karein */
+/* Sab default cursors ko hide karein
 body, a, button {
   cursor: none !important;
 }
@@ -42,4 +42,4 @@ body, a, button {
   background-color: rgba(255, 255, 255, 0.1);
   border: 1px solid transparent;
   backdrop-filter: blur(4px); /* Halka sa glass effect */
-}
+} */
