@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
+import { FaGithub, FaExternalLinkAlt } from "react-icons/fa"; // fixed import
 
 // Import images
 import carRent from "../assets/carrent.jpg";
@@ -80,21 +80,23 @@ const Projects = ({ darkMode }) => {
   return (
     <section
       id="projects"
-      className={`py-24 transition-colors duration-500`}
+      className={`py-24 transition-colors duration-500 ${
+        darkMode ? "bg-[#895129] text-[#FAF9F6]" : "bg-[#FAF9F6] text-[#895129]"
+      }`}
     >
       <div className="max-w-7xl mx-auto px-6">
         {/* TITLE */}
         <div className="text-center mb-14">
           <h2
             className={`text-4xl font-serif italic ${
-              darkMode ? "text-white" : "text-gray-800"
+              darkMode ? "text-[#FAF9F6]" : "text-[#895129]"
             }`}
           >
             My Projects
           </h2>
           <p
             className={`text-sm tracking-widest mt-2 ${
-              darkMode ? "text-yellow-400" : "text-cyan-700"
+              darkMode ? "text-[#FAF9F6]/80" : "text-[#895129]/80"
             }`}
           >
             FEATURED WORK
@@ -109,10 +111,12 @@ const Projects = ({ darkMode }) => {
               onClick={() => setFilter(btn)}
               className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                 filter === btn
-                  ? "bg-cyan-600 text-white shadow-lg scale-105"
+                  ? darkMode
+                    ? "bg-[#FAF9F6] text-[#895129] shadow-lg scale-105"
+                    : "bg-[#895129] text-[#FAF9F6] shadow-lg scale-105"
                   : darkMode
-                  ? "bg-white/10 text-white border border-white/20 hover:bg-white/20"
-                  : "bg-white border text-gray-700 hover:bg-gray-100"
+                  ? "bg-white/10 text-[#FAF9F6] border border-[#FAF9F6]/30 hover:bg-white/20"
+                  : "bg-white border text-[#895129] hover:bg-gray-100"
               }`}
             >
               {btn}
@@ -131,8 +135,8 @@ const Projects = ({ darkMode }) => {
               <div
                 className={`rounded-2xl h-full transition duration-500 backdrop-blur-xl hover:-translate-y-1 ${
                   darkMode
-                    ? "bg-white/5 border border-white/20 shadow-[0_8px_30px_rgba(0,0,0,0.4)] hover:shadow-[0_10px_40px_rgba(0,0,0,0.5)]"
-                    : "bg-white/70 border border-gray-200 shadow-[0_8px_20px_rgba(0,0,0,0.08)] hover:shadow-[0_10px_25px_rgba(0,0,0,0.15)]"
+                    ? "bg-[#FAF9F6]/10 border border-[#FAF9F6]/20 shadow-[0_8px_30px_rgba(250,249,246,0.6)] hover:shadow-[0_10px_40px_rgba(250,249,246,0.8)]"
+                    : "bg-[#895129]/10 border border-[#895129]/20 shadow-[0_8px_20px_rgba(137,81,41,0.4)] hover:shadow-[0_10px_25px_rgba(137,81,41,0.6)]"
                 }`}
               >
                 {/* IMAGE */}
@@ -154,16 +158,16 @@ const Projects = ({ darkMode }) => {
                     <a
                       href={project.github}
                       className={`p-3 rounded-full transition ${
-                        darkMode ? "bg-white text-black" : "bg-black text-white"
-                      } hover:scale-110`}
+                        darkMode ? "bg-[#FAF9F6] text-[#895129]" : "bg-[#895129] text-[#FAF9F6]"
+                      } hover:scale-110 shadow-lg`}
                     >
                       <FaGithub />
                     </a>
                     <a
                       href={project.live}
                       className={`p-3 rounded-full transition ${
-                        darkMode ? "bg-white text-black" : "bg-black text-white"
-                      } hover:scale-110`}
+                        darkMode ? "bg-[#FAF9F6] text-[#895129]" : "bg-[#895129] text-[#FAF9F6]"
+                      } hover:scale-110 shadow-lg`}
                     >
                       <FaExternalLinkAlt />
                     </a>
@@ -174,7 +178,7 @@ const Projects = ({ darkMode }) => {
                 <div className="p-6 space-y-4">
                   <h3
                     className={`text-xl font-semibold ${
-                      darkMode ? "text-white" : "text-gray-800"
+                      darkMode ? "text-[#FAF9F6]" : "text-[#895129]"
                     }`}
                   >
                     {project.title}
@@ -182,7 +186,7 @@ const Projects = ({ darkMode }) => {
 
                   <p
                     className={`text-sm ${
-                      darkMode ? "text-gray-300" : "text-gray-600"
+                      darkMode ? "text-[#FAF9F6]/70" : "text-[#895129]/70"
                     }`}
                   >
                     {project.desc}
@@ -195,8 +199,8 @@ const Projects = ({ darkMode }) => {
                         key={index}
                         className={`text-xs px-3 py-1 rounded-full backdrop-blur-sm border ${
                           darkMode
-                            ? "bg-yellow-400/10 text-yellow-300 border-yellow-400/20"
-                            : "bg-cyan-100 text-cyan-700 border-cyan-200"
+                            ? "bg-[#FAF9F6]/10 text-[#FAF9F6] border-[#FAF9F6]/30"
+                            : "bg-[#895129]/10 text-[#895129] border-[#895129]/30"
                         }`}
                       >
                         {tech}
@@ -208,14 +212,18 @@ const Projects = ({ darkMode }) => {
                   <div className="flex gap-6 pt-3 text-sm">
                     <a
                       href={project.github}
-                      className="flex items-center gap-2 hover:text-cyan-500 transition"
+                      className={`flex items-center gap-2 transition hover:text-cyan-500 ${
+                        darkMode ? "text-[#FAF9F6]" : "text-[#895129]"
+                      }`}
                     >
                       <FaGithub /> Code
                     </a>
 
                     <a
                       href={project.live}
-                      className="flex items-center gap-2 hover:text-cyan-500 transition"
+                      className={`flex items-center gap-2 transition hover:text-cyan-500 ${
+                        darkMode ? "text-[#FAF9F6]" : "text-[#895129]"
+                      }`}
                     >
                       <FaExternalLinkAlt /> Live
                     </a>

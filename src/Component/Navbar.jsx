@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import logo from "../assets/logo.png";
+import logo1 from "../assets/logo1.png"; // light theme logo
+import logo2 from "../assets/logo2.png"; // dark theme logo
 import { Sun, Moon } from "lucide-react";
 
 const Navbar = ({ darkMode, setDarkMode }) => {
@@ -8,18 +9,22 @@ const Navbar = ({ darkMode, setDarkMode }) => {
   return (
     <nav
       className={`w-full fixed top-0 left-0 z-50 backdrop-blur-xl border-b transition-all duration-500
-      ${darkMode ? "bg-white/5 border-white/10" : "bg-white/70 border-cyan-900/20"}
+      ${darkMode ? "bg-[#895129]/90 border-[#FAF9F6]/20" : "bg-[#FAF9F6]/90 border-[#895129]/20"}
       `}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-20">
 
         {/* Logo */}
-        <img src={logo} alt="logo" className="h-16 cursor-pointer" />
+        <img
+          src={darkMode ? logo2 : logo1}
+          alt="logo"
+          className="h-16 cursor-pointer transition-all duration-500"
+        />
 
         {/* Desktop Links */}
         <ul
           className={`hidden md:flex space-x-8 text-sm transition-colors duration-500
-          ${darkMode ? "text-gray-200" : "text-gray-700"}
+          ${darkMode ? "text-[#FAF9F6]" : "text-[#895129]"}
           `}
         >
           {[
@@ -32,11 +37,11 @@ const Navbar = ({ darkMode, setDarkMode }) => {
             <li
               key={item.name}
               className={`relative group cursor-pointer transition-all duration-300
-              ${darkMode ? "hover:text-white" : "hover:text-cyan-800"}
+              ${darkMode ? "hover:text-white" : "hover:text-[#895129]"}
               `}
             >
               <a href={item.href}>{item.name}</a>
-              <span className="absolute left-0 -bottom-1 w-0 h-[2px] rounded-full bg-gradient-to-r from-[#00c6ff] to-[#179ca8] transition-all duration-300 group-hover:w-full"></span>
+              <span className="absolute left-0 -bottom-1 w-0 h-[2px] rounded-full bg-gradient-to-r from-[#FAF9F6] to-[#895129] transition-all duration-300 group-hover:w-full"></span>
             </li>
           ))}
         </ul>
@@ -45,25 +50,34 @@ const Navbar = ({ darkMode, setDarkMode }) => {
         <div className="hidden md:flex items-center">
           <button
             onClick={() => setDarkMode(!darkMode)}
-            className={`relative w-16 h-8 flex items-center rounded-full backdrop-blur-lg border p-1 transition-all duration-500
-            ${darkMode ? "bg-white/10 border-white/20" : "bg-cyan-50 border-cyan-800"}
+            className={`relative w-16 h-8 flex items-center rounded-full border p-1 transition-all duration-500
+            ${darkMode ? "bg-[#FAF9F6]/20 border-[#FAF9F6]/40" : "bg-[#895129]/20 border-[#895129]/40"}
             `}
           >
+            {/* Sun */}
             <Sun
               size={16}
               className={`absolute left-2 transition-all duration-500 ${
-                darkMode ? "opacity-0 scale-50" : "opacity-100 scale-100 text-yellow-500"
+                darkMode
+                  ? "opacity-0 scale-50"
+                  : "opacity-100 scale-100 text-[#895129]"
               }`}
             />
+
+            {/* Moon */}
             <Moon
               size={16}
               className={`absolute right-2 transition-all duration-500 ${
-                darkMode ? "opacity-100 scale-100 text-cyan-800" : "opacity-0 scale-50"
+                darkMode
+                  ? "opacity-100 scale-100 text-[#FAF9F6]"
+                  : "opacity-0 scale-50"
               }`}
             />
+
+            {/* Toggle Circle */}
             <div
               className={`w-6 h-6 rounded-full shadow-lg transform transition-all duration-500
-              ${darkMode ? "translate-x-8 bg-gradient-to-r from-cyan-600 to-cyan-700" : "translate-x-0 bg-cyan-800"}`}
+              ${darkMode ? "translate-x-8 bg-[#FAF9F6]" : "translate-x-0 bg-[#895129]"}`}
             />
           </button>
         </div>
@@ -72,7 +86,7 @@ const Navbar = ({ darkMode, setDarkMode }) => {
         <div className="md:hidden">
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="text-cyan-500 text-2xl font-bold"
+            className={`${darkMode ? "text-[#FAF9F6]" : "text-[#895129]"} text-2xl font-bold`}
           >
             {isOpen ? "✕" : "☰"}
           </button>
@@ -83,7 +97,7 @@ const Navbar = ({ darkMode, setDarkMode }) => {
       {isOpen && (
         <div
           className={`md:hidden backdrop-blur-xl border-t px-6 py-6 space-y-4 text-center transition-all duration-500
-          ${darkMode ? "bg-white/5 border-white/10 text-gray-300" : "bg-white/80 border-cyan-900/20 text-gray-700"}
+          ${darkMode ? "bg-[#895129]/90 border-[#FAF9F6]/20 text-[#FAF9F6]" : "bg-[#FAF9F6]/90 border-[#895129]/20 text-[#895129]"}
           `}
         >
           {[
@@ -97,9 +111,9 @@ const Navbar = ({ darkMode, setDarkMode }) => {
               key={item.name}
               href={item.href}
               className={`block transition duration-300 cursor-pointer ${
-                darkMode ? "hover:text-white" : "hover:text-cyan-800"
+                darkMode ? "hover:text-white" : "hover:text-[#895129]"
               }`}
-              onClick={() => setIsOpen(false)} // close menu on click
+              onClick={() => setIsOpen(false)}
             >
               {item.name}
             </a>
@@ -110,24 +124,28 @@ const Navbar = ({ darkMode, setDarkMode }) => {
             <button
               onClick={() => setDarkMode(!darkMode)}
               className={`relative w-16 h-8 flex items-center rounded-full border p-1 transition-all duration-500
-              ${darkMode ? "bg-white/10 border-white/20" : "bg-cyan-50 border-cyan-800"}
+              ${darkMode ? "bg-[#FAF9F6]/20 border-[#FAF9F6]/40" : "bg-[#895129]/20 border-[#895129]/40"}
               `}
             >
               <Sun
                 size={16}
                 className={`absolute left-2 transition-all duration-500 ${
-                  darkMode ? "opacity-0 scale-50" : "opacity-100 scale-100 text-yellow-500"
+                  darkMode
+                    ? "opacity-0 scale-50"
+                    : "opacity-100 scale-100 text-[#895129]"
                 }`}
               />
               <Moon
                 size={16}
                 className={`absolute right-2 transition-all duration-500 ${
-                  darkMode ? "opacity-100 scale-100 text-cyan-800" : "opacity-0 scale-50"
+                  darkMode
+                    ? "opacity-100 scale-100 text-[#FAF9F6]"
+                    : "opacity-0 scale-50"
                 }`}
               />
               <div
                 className={`w-6 h-6 rounded-full shadow-lg transform transition-all duration-500
-                ${darkMode ? "translate-x-8 bg-gradient-to-r from-cyan-600 to-cyan-700" : "translate-x-0 bg-cyan-800"}`}
+                ${darkMode ? "translate-x-8 bg-[#FAF9F6]" : "translate-x-0 bg-[#895129]"}`}
               />
             </button>
           </div>

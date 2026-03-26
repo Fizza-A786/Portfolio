@@ -5,6 +5,8 @@ import About from "./Pages/About";
 import "./App.css";
 import Skills from "./Pages/Skills";
 import Projects from "./Pages/Projects";
+import Contact from "./Pages/Contact";
+import Footer from "./Pages/Footer";
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(true);
@@ -23,6 +25,9 @@ const App = () => {
         <About darkMode={darkMode} setDarkMode={setDarkMode} />
         <Skills darkMode={darkMode} setDarkMode={setDarkMode}/>
         < Projects  darkMode={darkMode} setDarkMode={setDarkMode}/>
+        < Contact darkMode={darkMode} setDarkMode={setDarkMode}/>
+        <Footer  darkMode={darkMode} setDarkMode={setDarkMode}/>
+
       </div>
     </div>
   );
