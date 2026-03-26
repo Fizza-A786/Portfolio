@@ -22,7 +22,7 @@ const App = () => {
         <Hero darkMode={darkMode} setDarkMode={setDarkMode} />
         <About darkMode={darkMode} setDarkMode={setDarkMode} />
         <Skills darkMode={darkMode} setDarkMode={setDarkMode}/>
-        < Projects/>
+        < Projects  darkMode={darkMode} setDarkMode={setDarkMode}/>
       </div>
     </div>
   );
